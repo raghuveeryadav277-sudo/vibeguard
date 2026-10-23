@@ -1,0 +1,1 @@
+{"dependencies":{"lodash":"4.17.20"},"description":"Fixture app pinning known-vulnerable dependency versions for scanner verification.","main":"index.js","name":"deps-app","private":true,"version":"1.0.0"}
