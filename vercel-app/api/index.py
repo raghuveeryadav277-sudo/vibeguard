@@ -13,4 +13,10 @@ from pathlib import Path
 os.environ.setdefault("VG_DATA_DIR", "/tmp/vg-data")
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from vg_app.server import Handler as handler  # noqa: E402,F401
+from vg_app.server import Handler as _VgHandler  # noqa: E402
+
+
+class handler(_VgHandler):
+    """Vercel entrypoint — defined in this file for Vercel's checker."""
+
+    pass
