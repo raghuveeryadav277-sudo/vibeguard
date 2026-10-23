@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VibeGuard — Vibe-Code Security Scanner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">VIBEGUARD</div>
+  <h1>Vibe-coded apps ship fast.<br>Security does <span class="accent">not</span>.</h1>
+  <p class="tagline">A security checkpoint for AI-generated apps — before launch.
+  Secrets scan (Gitleaks) · SAST rules · Dependency CVEs (OSV) · AI triage · One-click fixes.</p>
+</header>
+
+<main>
+  <!-- ============ SCAN INPUTS ============ -->
+  <section id="scan-panel">
+    <h2>Scan an app</h2>
+    <p class="note">VibeGuard always scans a <b>copy</b> — your original folder is never changed.
+    Fixes are applied only to the copy inside this app.</p>
+    <div class="cards3">
+      <div class="input-card">
+        <h3>▶ Demo App</h3>
+        <p>The bundled “QuickNotes” app with 5 planted security holes — the full
+        scan → fix → rescan story in one click.</p>
+        <button id="btn-demo" class="primary">Demo App Scan Karo</button>
+      </div>
+      <div class="input-card">
+        <h3>🗜 Upload ZIP</h3>
+        <p>Upload a .zip of any vibe-coded project (from Lovable, v0, Replit, Cursor…).</p>
+        <input type="file" id="zip-file" accept=".zip">
+        <button id="btn-zip" class="primary">Upload &amp; Scan</button>
+      </div>
+      <div class="input-card">
+        <h3>📂 Folder on this computer</h3>
+        <p>Type the full path of a project folder. It is copied into the app and scanned.</p>
+        <input type="text" id="folder-path" placeholder="C:\Users\you\my-app">
+        <button id="btn-path" class="primary">Scan Folder</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROGRESS ============ -->
+  <section id="progress" class="hidden">
+    <div class="spinner"></div>
+    <div id="progress-steps">
+      <span data-step>Ingest — unpacking the project…</span>
+      <span data-step>Secrets — Gitleaks + built-in key checks…</span>
+      <span data-step>SAST — code pattern rules…</span>
+      <span data-step>Dependencies — OSV vulnerability database…</span>
+      <span data-step>AI Triage — explaining every finding in plain English…</span>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results" class="hidden">
+    <div class="scoreband">
+      <div class="score-ring" id="score-ring"><span id="score-num">–</span></div>
+      <div class="score-meta">
+        <h2 id="result-title">Results</h2>
+        <div id="result-sub"></div>
+        <div id="triage-badge"></div>
+        <div id="layer-chips"></div>
+        <div class="actions">
+          <button id="btn-fix" class="primary big">⚒ Fix All (safe auto-fixes)</button>
+          <button id="btn-rotated" class="ghost hidden">✔ I rotated the leaked keys</button>
+          <button id="btn-reset" class="ghost hidden">↺ Reset Demo App</button>
+          <a id="btn-report-html" class="ghost linkbtn" href="#">⬇ HTML Report</a>
+          <a id="btn-report-json" class="ghost linkbtn" href="#">⬇ JSON</a>
+        </div>
+        <div id="fix-notes"></div>
+      </div>
+    </div>
+    <div id="tool-notes"></div>
+    <div id="advisory-slot"></div>
+    <h2 class="findings-h">Findings <span id="findings-count"></span></h2>
+    <div id="findings"></div>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+  <section id="settings-panel">
+    <h2>Settings — AI Triage (Gemini)</h2>
+    <p class="note">Triage reads each finding with its code and explains it in very
+    simple English, checks the real severity, and removes duplicates.
+    Paste your <b>own free Gemini API key</b> (from Google AI Studio). The key is stored
+    <b>only on this computer</b>, in this app's folder — it is never sent anywhere except Google,
+    and never appears in reports. Without a key, VibeGuard uses built-in explanations (offline mode).</p>
+    <div class="settings-row">
+      <input type="password" id="api-key" placeholder="Paste Gemini API key here" autocomplete="off">
+      <button id="btn-save-key" class="primary">Save Key</button>
+      <span id="key-status"></span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  VibeGuard — hackathon build. Honest notes: the SAST layer uses built-in Semgrep-style
+  pattern rules (Semgrep does not run natively on Windows laptops; binary integration is roadmap).
+  Pattern findings show a confidence score — verify before treating them as confirmed.
+  Secrets are always shown masked. The dependency check (OSV) needs internet; everything else works offline.
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
