@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean App — Notes</title>
+  <meta name="description" content="A tidy mini notes app used as a clean test fixture. No critical or high findings expected." />
+  <meta property="og:title" content="Clean App — Notes" />
+  <meta property="og:description" content="A tidy mini notes app used as a clean test fixture." />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <main>
+    <h1>Clean App</h1>
+    <div id="note"></div>
+    <div id="status"></div>
+  </main>
+  <script src="app.js"></script>
+  <script>
+    // Safe DOM update: textContent only for all user-facing text.
+    const noteEl = document.getElementById('note');
+    const userNote = 'Welcome back!';
+    noteEl.textContent = userNote;
+
+    const statusEl = document.getElementById('status');
+    statusEl.textContent = 'All notes are private to your account.';
+  </script>
+</body>
+</html>

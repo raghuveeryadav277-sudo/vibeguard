@@ -1,0 +1,1 @@
+{"dependencies":{"lodash":"4.17.21"},"description":"Tidy mini app fixture — should produce no critical/high findings.","main":"app.js","name":"clean-app","private":true,"scripts":{"start":"node app.js"},"version":"1.0.0"}
