@@ -1,0 +1,8 @@
+# Scanner tool binaries — official releases se download hote hain, repo me nahi rakhe
+tools/
+# API key sirf local settings me rehti hai — kabhi commit nahi karni
+data/settings.json
+data/
+cache/
+__pycache__/
+*.pyc
